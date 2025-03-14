@@ -21,7 +21,8 @@ const signUp= async(req, res)=>{
         const newUser= new User({
             name,
             email, 
-            password: hashedPassword
+            password: hashedPassword,
+            role
         });
 
         await newUser.save();
@@ -50,7 +51,7 @@ const login= async(req, res)=>{
             return res.status(401).json({message: 'Invalid Credentials'});
         }
 
-        const token= jwt.sign({id: userExist._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+        const token= jwt.sign({id: userExist._id, role: userExist.role}, process.env.JWT_SECRET, {expiresIn: '1h'});
         res.status(200).json({message: 'User login successful', token});
 
     } catch (error) {
