@@ -12,7 +12,10 @@ const restaurantSchema= new mongoose.Schema({
     location: {
         type: String,
         required: true
-    }
+    },
+    menu: [{
+        type: mongoose.Schema.ObjectId, ref: 'MenuItem',
+    }]
 });
 
 
