@@ -13,6 +13,7 @@ require('./config/db');
 app.use('/api/users', require('./routes/user'));
 app.use('/api/restaurants', require('./routes/restaurant'));
 app.use('/api/restaurants', require('./routes/menu'));
+app.use('/api/cart', require('./routes/cart'));
 
 const port= process.env.PORT || 4000;
 
